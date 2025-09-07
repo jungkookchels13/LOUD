@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LOUD — fold.crash.</title>
+
+    <!-- Fuente Narnia -->
+    <style>
+      @font-face {
+        font-family: 'Narnia';
+        src: url('Narnia.ttf') format('truetype');
+        font-display: swap;
+      }
+    </style>
+
+    <style>
+      :root{
+        --bg: #000;
+        --fg: #fff;
+        --accent: #ff00aa; /* magenta LOUD */
+        --radius: 20px;
+      }
+
+      *{box-sizing:border-box;margin:0;padding:0}
+
+      body{
+        background: var(--bg);
+        color: var(--fg);
+        font-family: 'Narnia', system-ui, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-x: hidden;
+      }
+
+      /* HERO */
+      .hero{
+        text-align:center;
+        padding:60px 20px;
+      }
+
+      h1{
+        font-size: clamp(48px, 15vw, 180px);
+        color: var(--accent);
+        text-shadow: 2px 2px 0 #fff, -2px -2px 0 #000;
+        position: relative;
+      }
+
+      h1::after{
+        content: "LOUD";
+        position: absolute;
+        left:0; right:0; top:0; bottom:0;
+        color:#fff;
+        mix-blend-mode:difference;
+        animation: glitch 1.2s infinite;
+      }
+
+      @keyframes glitch{
+        0%{transform:translate(0)}
+        20%{transform:translate(-2px,2px)}
+        40%{transform:translate(-2px,-2px)}
+        60%{transform:translate(2px,2px)}
+        80%{transform:translate(2px,-2px)}
+        100%{transform:translate(0)}
+      }
+
+      p.sub{
+        font-size:clamp(14px,3vw,22px);
+        letter-spacing:.15em;
+        color:#ccc;
+        margin-top:10px;
+        text-transform:uppercase;
+      }
+
+      .cta{
+        margin-top:30px;
+        display:flex;
+        flex-wrap:wrap;
+        gap:15px;
+        justify-content:center;
+      }
+
+      /* --- BOTONES --- */
+      .btn{
+        padding:14px 26px;
+        border-radius:12px;
+        text-decoration:none;
+        font-weight:900;
+        letter-spacing:.15em;
+        text-transform:uppercase;
+        position: relative;
+        overflow:hidden;
+        transition:.25s;
+      }
+      .btn::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        border:2px dashed var(--accent);
+        border-radius:12px;
+        transform: rotate(-2deg);
+        opacity:.4;
+      }
+      .btn--ghost{
+        color: var(--accent);
+        background:#000;
+        border:2px solid var(--accent);
+        box-shadow:0 0 12px rgba(255,0,170,.6);
+      }
+      .btn--ghost:hover{
+        background:var(--accent);
+        color:#000;
+        transform:scale(1.05) rotate(-1deg);
+      }
+      .btn--solid{
+        background: var(--accent);
+        color:#000;
+        border:2px solid var(--accent);
+        box-shadow:0 0 14px rgba(255,0,170,.8);
+      }
+      .btn--solid:hover{
+        background:#000;
+        color:var(--accent);
+        transform:scale(1.08) rotate(1deg);
+      }
+
+      /* Doodles / Graffiti vibe */
+      body::before{
+        content:"★ ✦ ✧ ✩ ✪ ✭";
+        position:fixed;
+        top:5%; left:-10%;
+        font-size:100px;
+        color:rgba(255,0,170,0.12);
+        transform:rotate(-20deg);
+      }
+      body::after{
+        content:"LOUD! LOUD! LOUD!";
+        position:fixed;
+        bottom:10%; right:-15%;
+        font-size:60px;
+        color:rgba(255,0,170,0.2);
+        transform:rotate(30deg);
+        font-weight:900;
+      }
+
+      /* TICKER */
+      .ticker{
+        overflow:hidden;
+        background:#111;
+        border-top:1px solid #333;
+        border-bottom:1px solid #333;
+      }
+      .ticker__track{
+        display:inline-block;
+        white-space:nowrap;
+        animation:marquee 15s linear infinite;
+        padding:12px 0;
+      }
+      .ticker span{
+        margin-right:40px;
+        color:var(--accent);
+        font-weight:bold;
+        text-transform:uppercase;
+        letter-spacing:.2em;
+      }
+      @keyframes marquee{
+        0%{transform:translateX(0)}
+        100%{transform:translateX(-50%)}
+      }
+
+      footer{
+        text-align:center;
+        padding:20px;
+        font-size:12px;
+        color:#888;
+      }
+
+      /* responsive */
+      @media (max-width:600px){
+        h1{font-size:70px}
+        .cta{flex-direction:column}
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1>LOUD</h1>
+        <p class="sub">trash couture rave · rule-breakers only</p>
+
+        <div class="cta">
+          <a class="btn btn--ghost" href="https://instagram.com/iloudaf" target="_blank">get loud</a>
+          <a class="btn btn--solid" href="https://docs.google.com/forms/d/e/1FAIpQLSeRpZfDtx2-dsZmLGzq4LiVWEI0VdrUghSjriIR6ZlSpn3wig/viewform?usp=header" target="_blank">notify me</a>
+        </div>
+      </section>
+
+      <div class="ticker">
+        <div class="ticker__track">
+          <span>CREATED BY IDIOS & LOUD</span>
+          <span>COMING SOON — 12 · FEB · 2026</span>
+          <span>LISTEN CAREFULLY</span>
+          <span>FOLD.CRASH. LOUD</span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      © LOUD. break pretty things.
+    </footer>
+  </body>
+</html>
